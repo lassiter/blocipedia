@@ -1,0 +1,11 @@
+<div class="jumbotron">
+  <h1 class="display-4">Welcome to Blocpedia!</h1>
+  <p class="lead">Blocpedia is a markdown wiki for people to crowdsource information for their communities.</p>
+  <hr class="my-4">
+  <p>Signup and get started!</p>
+  <p class="lead">
+    <%= link_to "Sign Up", new_user_registration_path, :class => 'btn btn-primary btn-lg'  %>
+    <small class="row"> Already a user? <%= link_to "Sign In", new_user_session_path, :class => ''  %></small>
+  </p>
+</div>
+<%# todo: create bootstrap modal for login/signup %>

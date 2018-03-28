@@ -1,1 +1,7 @@
-<p>This is the home#index</p>
+<div class="row">
+<% if user_signed_in? %>
+  
+<% else %>
+  <%= render "signup" %>
+<% end %>
+</div>
