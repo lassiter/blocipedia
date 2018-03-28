@@ -1,3 +1,4 @@
+Rails.application.routes.default_url_options[:host] = 'localhost'
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -29,6 +30,7 @@ Rails.application.configure do
   config.action_controller.allow_forgery_protection = false
   config.action_mailer.perform_caching = false
 
+  
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.

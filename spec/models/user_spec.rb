@@ -13,6 +13,7 @@ let(:user) { FactoryBot.create(:user) }
           user.email = 'foo@bar' # valid state
           user.valid? # run validations
           user.errors[:email]
+          puts user.errors[:email]
           expect(user.errors[:email]).to eq(["is invalid"]) # check for presence of error
         end
         it 'should validate as present and correctly formatted' do
