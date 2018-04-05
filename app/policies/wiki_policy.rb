@@ -1,33 +1,24 @@
 class WikiPolicy < ApplicationPolicy
 
-  def index?
+  def initialize(current_user, model) #mentor
+    @current_user = current_user
+    @wiki = model #mentor
+  end
 
+  def index?
+    
+  end
+  def create?
+    @current_user
+  end
+
+  def update?
+    @current_user
   end
 
   def destroy?
-    user.admin? || user.id == record.user_id
+    @current_user.admin? || @current_user.id == @wiki.user_id
   end
 
-  class Scope
-    attr_reader :user, :scope
-
-    def initialize(user, scope)
-      @user = user
-      @scope = scope
-    end
-
-    def resolve
-      wikis = []
-      if user.role == 'admin'
-        scope.all
-      elsif user.role == 'premium'
-        user_wikis = scope.all
-        all_wikis.each do |wiki|
-          
-        end
-      else
-        scope.where(public: true)
-      end
-    end
-  end
+ 
 end

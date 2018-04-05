@@ -4,6 +4,8 @@ RSpec.describe WikisController, type: :controller do
   let(:wiki) { create(:wiki) }
   let(:wikis) { Wiki.all }
   let(:user) {wiki.user}
+  let(:editing_user) {create(:user, role: :member)}
+  let(:admin_user) {create(:user, role: :admin)}
 
   describe 'GET index' do
     context 'when the is a user is a guest role' do
@@ -68,6 +70,14 @@ RSpec.describe WikisController, type: :controller do
         expect(post_instance.title).to eq(wiki.title)
         expect(post_instance.body).to eq(wiki.body)
       end
+      # it 'should allow another user to edit another user\'s public post' do
+      #   create(:wiki, user: user)
+      #   get :edit, params: { id: wiki.id }
+      #   sign_in editing_user
+      #   expect {click_button 'Save'}.to change_multiple { editing_user.reload }.with_expectations(
+      #     name:       {from: wiki.title, to: 'example post'},
+      #     updated_at: {from: wiki.body, to: 'example body text that must be atleast 100 characters long example body text that must be atleast 100 characters long'})
+      # end
     end
   end
   describe 'GET show' do
