@@ -5,3 +5,59 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+@timestamp = Faker::Time.between(2.days.ago, Date.today, :all)
+@random_boolean = [true, false].sample
+# Create Users
+5.times do
+  
+  User.create!(
+    email: Faker::Internet.unique.email,
+    password: Faker::Internet.password(10, 20),
+    role: rand(0..1),
+    confirmed_at: DateTime.now,
+    sign_in_count: 1,
+    created_at: @timestamp,
+    updated_at: @timestamp
+  )
+  User.create!(
+    email: Faker::Internet.unique.email,
+    password: Faker::Internet.password(10, 20),
+    role: rand(0..1),
+    confirmed_at: DateTime.now,
+    sign_in_count: 1,
+    created_at: @timestamp,
+    updated_at: @timestamp
+  )
+end
+1.times do
+  User.create!(
+    email: 'lassitergregg@gmail.com',
+    password: 'example',
+    role: 2,
+    confirmed_at: DateTime.now,
+    sign_in_count: 1,
+    created_at: @timestamp,
+    updated_at: @timestamp
+  )
+end
+# Create Wiki
+50.times do
+  Wiki.create!(
+    title: Faker::Lorem.sentence,
+    body: Faker::Lorem.paragraph(6, false, 6),
+    private: @random_boolean,
+    user_id: rand(1..(User.count - 1)),
+    created_at: @timestamp,
+    updated_at: @timestamp
+  )
+end
+
+
+
+
+puts "Created #{User.count} and expect 11 per run"
+puts "Created #{Wiki.count} and expect 50 per run"
+# Faker Cleanup
+1.times do 
+  Faker::UniqueGenerator.clear
+end
