@@ -13,7 +13,8 @@ gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Bootstrap sass
-gem 'bootstrap-sass', '>= 3.2'
+gem 'bootstrap'
+gem 'sprockets-rails', '>= 3.2.1'
 # Bootstrap Dependency
 gem 'jquery-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -32,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Devise is a flexible authentication solution for Rails based on Warden.
 gem 'devise'
+# Pundit is a set of helpers which guide you in leveraging regular Ruby classes and object oriented design patterns to build a simple, robust and scaleable authorization system.
+gem "pundit"
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
@@ -61,6 +64,7 @@ group :development do
   # # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'
   # gem 'spring-watcher-listen', '~> 2.0.0'
+  # using mailcatcher for emails
 end
 
 # Used for ENV variables

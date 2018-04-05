@@ -1,5 +1,10 @@
-
-    <div class="col-md-4">
-        <%= link_to "New Wiki", new_wiki_path(@wiki), class: 'btn btn-success' %>
+<div class="row">
+    <div class="col-md-8">
+        <ul class="list-unstyled">
+            <%= render partial: 'wiki', collection: @wikis %>
+        </ul>
     </div>
-<%= render partial: 'wiki', collection: @wikis %>
+    <div class="col-md-4">
+        <%= link_to "Create Wiki", new_wiki_path(@wiki), class: 'btn btn-success' %>
+    </div>
+<div>

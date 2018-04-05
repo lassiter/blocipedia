@@ -1,10 +1,6 @@
-       <div class="media">
-         <div class="media-body">
-           <h4 class="media-heading">
-            <%= link_to wiki.title, wiki_path(wiki) %>
-           </h4>
-            <small>
-                Last updated <%= time_ago_in_words(wiki.updated_at) %> ago
-            </small>
-         </div>
-       </div>
+<li class="media">
+  <div class="media-body">
+    <h5 class="mt-0 mb-1"><%= link_to wiki.title, wiki_path(wiki) %></h5>
+    <small>Last updated <%= time_ago_in_words(wiki.updated_at) %> ago</small>
+  </div>
+</li>

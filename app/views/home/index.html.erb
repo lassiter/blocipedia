@@ -1,6 +1,6 @@
 <div class="row">
 <% if user_signed_in? %>
-  
+  <%= render "home/home" %>
 <% else %>
   <%= render "signup" %>
 <% end %>
