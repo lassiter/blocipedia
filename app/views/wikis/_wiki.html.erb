@@ -1,0 +1,10 @@
+       <div class="media">
+         <div class="media-body">
+           <h4 class="media-heading">
+            <%= link_to wiki.title, wiki_path(wiki) %>
+           </h4>
+            <small>
+                Last updated <%= time_ago_in_words(wiki.updated_at) %> ago
+            </small>
+         </div>
+       </div>

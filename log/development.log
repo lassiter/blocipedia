@@ -2991,3 +2991,1455 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 63ms (Views: 60.1ms | ActiveRecord: 0.2ms)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateWikis (20180328224832)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "wikis" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "private" boolean, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_9cc9521fd9"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_wikis_on_user_id" ON "wikis" ("user_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180328224832"]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_wikis_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_wikis_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddRoleToUser (20180328233729)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "users" ADD "role" integer DEFAULT 0 NOT NULL[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180328233729"]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_wikis_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_wikis_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "karli@gloverschaden.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "karli@gloverschaden.com"], ["encrypted_password", "$2a$11$lgUW7A4IZuGQoNbeRRV9.uCKT5Arq5oMezY3bHuSXUYn6.y0uGJR6"], ["confirmation_token", "QwWfLWhrKv38WNgig7Ce"], ["confirmation_sent_at", "2018-04-02 22:53:15.179206"], ["created_at", "2018-04-02 22:53:15.178856"], ["updated_at", "2018-04-02 22:53:15.178856"]]
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  Rendering devise/mailer/confirmation_instructions.html.erb
+  Rendered devise/mailer/confirmation_instructions.html.erb (3.6ms)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 375.5ms
+Sent mail to karli@gloverschaden.com (85.6ms)
+Date: Mon, 02 Apr 2018 17:53:15 -0500
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: karli@gloverschaden.com
+Message-ID: <5ac2b45bbf07f_424b3fd3d483f864604d8@Lassiters-MacBook-Pro.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome karli@gloverschaden.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=QwWfLWhrKv38WNgig7Ce">Confirm my account</a></p>
+
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "karli@gloverschaden.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "karli@gloverschaden.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "karli@gloverschaden.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "nat_gottlieb@bogisich.name"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "nat_gottlieb@bogisich.name"], ["encrypted_password", "$2a$11$8RorhMFpJzNiGof8LBLvYOs.L9d6s9NBYgCz/4rIz4hC8CxGDFgY6"], ["confirmation_token", "r_utZr9GUxSNDVVoEoxs"], ["confirmation_sent_at", "2018-04-02 22:56:44.499196"], ["created_at", "2018-04-02 22:56:44.498932"], ["updated_at", "2018-04-02 22:56:44.498932"]]
+  [1m[35m (50.9ms)[0m  [1m[36mcommit transaction[0m
+  Rendering devise/mailer/confirmation_instructions.html.erb
+  Rendered devise/mailer/confirmation_instructions.html.erb (3.4ms)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 375.6ms
+Sent mail to nat_gottlieb@bogisich.name (10.3ms)
+Date: Mon, 02 Apr 2018 17:56:45 -0500
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: nat_gottlieb@bogisich.name
+Message-ID: <5ac2b52d27a26_43803fefc483f89432746@Lassiters-MacBook-Pro.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome nat_gottlieb@bogisich.name!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=r_utZr9GUxSNDVVoEoxs">Confirm my account</a></p>
+
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "nat_gottlieb@bogisich.name"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "abbigail@ortizgreenholt.name"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "abbigail@ortizgreenholt.name"], ["encrypted_password", "$2a$11$fR2bX6JFuf9NTogy1P2Y4.RUSHOnPKAM/woLyiqB/PzE8qJnkoboi"], ["confirmation_token", "oQ52_zUxqkNJgYdKjwYq"], ["confirmation_sent_at", "2018-04-02 22:57:06.585778"], ["created_at", "2018-04-02 22:57:06.585436"], ["updated_at", "2018-04-02 22:57:06.585436"]]
+  [1m[35m (51.9ms)[0m  [1m[36mcommit transaction[0m
+  Rendering devise/mailer/confirmation_instructions.html.erb
+  Rendered devise/mailer/confirmation_instructions.html.erb (3.3ms)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 406.1ms
+Sent mail to abbigail@ortizgreenholt.name (10.3ms)
+Date: Mon, 02 Apr 2018 17:57:07 -0500
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: abbigail@ortizgreenholt.name
+Message-ID: <5ac2b54341044_43943fc69503f87c30344@Lassiters-MacBook-Pro.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome abbigail@ortizgreenholt.name!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=oQ52_zUxqkNJgYdKjwYq">Confirm my account</a></p>
+
+Started GET "/" for 127.0.0.1 at 2018-04-02 17:57:35 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_signup.html.erb (1.0ms)
+  Rendered home/index.html.erb within layouts/application (22.2ms)
+Completed 200 OK in 3430ms (Views: 3405.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/wikis" for 127.0.0.1 at 2018-04-02 17:57:47 -0500
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  [1m[36mWiki Load (0.3ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered wikis/index.html.erb within layouts/application (405.0ms)
+Completed 500 Internal Server Error in 428ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `wiki' for #<#<Class:0x007fb68c3d7f30>:0x007fb68c3d5be0>
+Did you mean?  @wikis):
+     6:     <div class="media">
+     7:       <div class="media-body">
+     8:         <h4 class="media-heading">
+     9:           <%= link_to wiki.title, wiki %>
+    10:         </h4>
+    11:         <small>
+    12:           <%= wiki.description %>
+  
+app/views/wikis/index.html.erb:9:in `_app_views_wikis_index_html_erb__3801028321410180445_70210982978640'
+Started GET "/wikis" for 127.0.0.1 at 2018-04-02 17:58:24 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  Rendered wikis/index.html.erb within layouts/application (6.9ms)
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+     6:     <div class="media">
+     7:       <div class="media-body">
+     8:         <h4 class="media-heading">
+     9:           <%= link_to @wiki.title, @wiki %>
+    10:         </h4>
+    11:         <small>
+    12:           <%= @wiki.description %>
+  
+app/views/wikis/index.html.erb:9:in `_app_views_wikis_index_html_erb___3855394056114345603_70123684066740'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_wikis_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_wikis_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddRoleToUser (20180328233729)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ausers" ("id" integer NOT NULL PRIMARY KEY, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar DEFAULT NULL, "reset_password_sent_at" datetime DEFAULT NULL, "remember_created_at" datetime DEFAULT NULL, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime DEFAULT NULL, "last_sign_in_at" datetime DEFAULT NULL, "current_sign_in_ip" varchar DEFAULT NULL, "last_sign_in_ip" varchar DEFAULT NULL, "confirmation_token" varchar DEFAULT NULL, "confirmed_at" datetime DEFAULT NULL, "confirmation_sent_at" datetime DEFAULT NULL, "unconfirmed_email" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "role" integer DEFAULT 0 NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_ausers_on_reset_password_token" ON "ausers" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_ausers_on_email" ON "ausers" ("email")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "ausers" ("id","email","encrypted_password","reset_password_token","reset_password_sent_at","remember_created_at","sign_in_count","current_sign_in_at","last_sign_in_at","current_sign_in_ip","last_sign_in_ip","confirmation_token","confirmed_at","confirmation_sent_at","unconfirmed_email","created_at","updated_at","role")
+                     SELECT "id","email","encrypted_password","reset_password_token","reset_password_sent_at","remember_created_at","sign_in_count","current_sign_in_at","last_sign_in_at","current_sign_in_ip","last_sign_in_ip","confirmation_token","confirmed_at","confirmation_sent_at","unconfirmed_email","created_at","updated_at","role" FROM "users"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer NOT NULL PRIMARY KEY, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar DEFAULT NULL, "reset_password_sent_at" datetime DEFAULT NULL, "remember_created_at" datetime DEFAULT NULL, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime DEFAULT NULL, "last_sign_in_at" datetime DEFAULT NULL, "current_sign_in_ip" varchar DEFAULT NULL, "last_sign_in_ip" varchar DEFAULT NULL, "confirmation_token" varchar DEFAULT NULL, "confirmed_at" datetime DEFAULT NULL, "confirmation_sent_at" datetime DEFAULT NULL, "unconfirmed_email" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id","email","encrypted_password","reset_password_token","reset_password_sent_at","remember_created_at","sign_in_count","current_sign_in_at","last_sign_in_at","current_sign_in_ip","last_sign_in_ip","confirmation_token","confirmed_at","confirmation_sent_at","unconfirmed_email","created_at","updated_at")
+                     SELECT "id","email","encrypted_password","reset_password_token","reset_password_sent_at","remember_created_at","sign_in_count","current_sign_in_at","last_sign_in_at","current_sign_in_ip","last_sign_in_ip","confirmation_token","confirmed_at","confirmation_sent_at","unconfirmed_email","created_at","updated_at" FROM "ausers"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "ausers"[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20180328233729"]]
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_wikis_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_wikis_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddRoleToUser (20180328233729)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "users" ADD "role" integer DEFAULT 0 NOT NULL[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180328233729"]]
+  [1m[35m (60.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_wikis_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_wikis_on_user_id' AND type='index'
+[0m
+  [1m[36mWiki Load (2.0ms)[0m  [1m[34mSELECT "wikis".* FROM "wikis"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "keira@schaeferwiegand.biz"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "keira@schaeferwiegand.biz"], ["encrypted_password", "$2a$11$BhRrhSUfKBqY.ScjvUCfpug2HT0Rd8dJ43GgZfmE.wiTew/9ti2R6"], ["confirmation_token", "ABiQe89DLLswMVF63hY5"], ["confirmation_sent_at", "2018-04-02 23:01:41.025752"], ["created_at", "2018-04-02 23:01:41.025403"], ["updated_at", "2018-04-02 23:01:41.025403"]]
+  [1m[35m (63.6ms)[0m  [1m[36mcommit transaction[0m
+  Rendering devise/mailer/confirmation_instructions.html.erb
+  Rendered devise/mailer/confirmation_instructions.html.erb (3.5ms)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 312.4ms
+Sent mail to keira@schaeferwiegand.biz (10.9ms)
+Date: Mon, 02 Apr 2018 18:01:41 -0500
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: keira@schaeferwiegand.biz
+Message-ID: <5ac2b6559fdaf_447b3fcbe9c3f89489441@Lassiters-MacBook-Pro.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome keira@schaeferwiegand.biz!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=ABiQe89DLLswMVF63hY5">Confirm my account</a></p>
+
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "keira@schaeferwiegand.biz"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "wikis" ("id", "title", "body", "private", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["id", 178], ["title", "Porro alias saepe dicta corrupti voluptate."], ["body", "Sapiente dolorem est consequatur qui. Cum qui nisi repellendus suscipit. Repellendus quasi quas. Dolorum eveniet rerum qui. Dolor illum sunt iste ut pariatur dolorem libero."], ["private", "f"], ["user_id", 2], ["created_at", "2018-04-02 23:09:13.161137"], ["updated_at", "2018-04-02 23:09:13.161139"]]
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "wikis" ("id", "title", "body", "private", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["id", 101], ["title", "At perspiciatis vitae nisi quas."], ["body", "Exercitationem quis id voluptates voluptatem. At consequatur nobis vel eveniet est saepe hic. Aut beatae et sunt a nihil. Maxime dolores repellendus. Blanditiis minima expedita fugit asperiores nihil."], ["private", "f"], ["user_id", 2], ["created_at", "2018-04-02 23:10:01.492276"], ["updated_at", "2018-04-02 23:10:01.492277"]]
+  [1m[35m (50.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "wikis" ("id", "title", "body", "private", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["id", 171], ["title", "Neque quis error labore molestias."], ["body", "Labore omnis ipsam doloremque enim cupiditate et. Numquam voluptas eveniet vel unde maiores pariatur. Culpa a beatae ab. Itaque quis ab. Dolorum similique vel consequatur natus reiciendis. Nihil voluptatem eum sed aut at voluptas. Excepturi laboriosam sit explicabo minus aut maiores quod."], ["private", "f"], ["user_id", 2], ["created_at", "2018-04-02 23:10:20.685482"], ["updated_at", "2018-04-02 23:10:20.685484"]]
+  [1m[35m (59.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "wikis" ("id", "title", "body", "private", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["id", 122], ["title", "Possimus nemo molestiae sed dolores omnis ut qui suscipit."], ["body", "Et qui laudantium veritatis voluptatem aut in. Facilis ullam aperiam itaque sit ut eveniet. Maiores voluptatibus aut totam possimus. Error aut adipisci. Sint accusamus fugit qui rem blanditiis vel quisquam. Recusandae eaque voluptatibus. Voluptas pariatur et aut corrupti ullam cupiditate non. Et quis maiores alias quidem autem."], ["private", "f"], ["user_id", 2], ["created_at", "2018-04-02 23:10:56.724812"], ["updated_at", "2018-04-02 23:10:56.724814"]]
+  [1m[35m (55.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "wikis" ("id", "title", "body", "private", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["id", 126], ["title", "Enim tempore sed eos voluptates assumenda."], ["body", "Assumenda omnis dicta non suscipit et nesciunt. Corrupti temporibus est. Incidunt ea dolore quam cupiditate porro expedita molestiae. Quae sed nulla qui praesentium officia. Vitae quis vel quis at amet. Quos numquam error eos fugit quis provident et. Ut sequi laboriosam voluptatum voluptate. Adipisci est doloremque."], ["private", "f"], ["user_id", 2], ["created_at", "2018-04-02 23:10:56.783955"], ["updated_at", "2018-04-02 23:10:56.783956"]]
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "wikis" ("id", "title", "body", "private", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["id", 111], ["title", "Facilis et unde commodi."], ["body", "In sint et eos vel iure quia et. Saepe iusto optio eius ut totam. Deleniti facere dolorem illum similique. Laudantium quae quos est quo. Repellat autem sint."], ["private", "f"], ["user_id", 2], ["created_at", "2018-04-02 23:10:56.791019"], ["updated_at", "2018-04-02 23:10:56.791020"]]
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "wikis" ("id", "title", "body", "private", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["id", 153], ["title", "Iure quis minus quidem est."], ["body", "In est voluptas rerum doloribus dolorum. Ea vel saepe consectetur earum minus. Quos aut et et aut perspiciatis. Fugiat at aut dolorem et cumque. Beatae illum neque dolorum. Sequi et non veritatis odit in voluptates. Voluptatum commodi dolor a perspiciatis. Ex architecto sint quis."], ["private", "f"], ["user_id", 2], ["created_at", "2018-04-02 23:10:56.798680"], ["updated_at", "2018-04-02 23:10:56.798681"]]
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "wikis" ("id", "title", "body", "private", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["id", 162], ["title", "Voluptas neque vel fuga."], ["body", "Consequatur et architecto non et ad. Enim et eveniet. Id magni consectetur expedita nostrum repellendus. Quas saepe voluptatem et vel eveniet nobis. Maiores illo natus magni dolore voluptatibus quia enim. Et officia et eligendi ut. Iste molestias error eum. Assumenda veritatis nesciunt."], ["private", "f"], ["user_id", 2], ["created_at", "2018-04-02 23:10:56.807216"], ["updated_at", "2018-04-02 23:10:56.807216"]]
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mWiki Load (0.3ms)[0m  [1m[34mSELECT "wikis".* FROM "wikis"[0m
+Started GET "/wikis" for 127.0.0.1 at 2018-04-02 18:11:37 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  Rendered wikis/index.html.erb within layouts/application (6.0ms)
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+     6:     <div class="media">
+     7:       <div class="media-body">
+     8:         <h4 class="media-heading">
+     9:           <%= link_to @wiki.title, @wiki %>
+    10:         </h4>
+    11:         <small>
+    12:           <%= @wiki.description %>
+  
+app/views/wikis/index.html.erb:9:in `_app_views_wikis_index_html_erb__3691122935042171902_70303865616640'
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" ORDER BY "wikis"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mWiki Load (0.3ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" ORDER BY "wikis"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35mSQL (52.9ms)[0m  [1m[31mDELETE FROM "wikis" WHERE "wikis"."id" = ?[0m  [["id", 178]]
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" ORDER BY "wikis"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" ORDER BY "wikis"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "wikis" SET "title" = ?, "updated_at" = ? WHERE "wikis"."id" = ?[0m  [["title", "testing"], ["updated_at", "2018-04-02 23:13:55.488091"], ["id", 171]]
+  [1m[35m (347.6ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/wikis" for 127.0.0.1 at 2018-04-02 20:00:40 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  Rendered wikis/index.html.erb within layouts/application (5.6ms)
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+     6:     <div class="media">
+     7:       <div class="media-body">
+     8:         <h4 class="media-heading">
+     9:           <%= link_to @wiki.title, @wiki %>
+    10:         </h4>
+    11:         <small>
+    12:           <%= @wiki.description %>
+  
+app/views/wikis/index.html.erb:9:in `_app_views_wikis_index_html_erb___1252475708948216855_70163415761960'
+Started GET "/wikis" for 127.0.0.1 at 2018-04-02 20:13:01 -0500
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  [1m[36mWiki Load (0.3ms)[0m  [1m[34mSELECT "wikis".* FROM "wikis"[0m
+  Rendered wikis/index.html.erb within layouts/application (14.9ms)
+Completed 200 OK in 433ms (Views: 428.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/wikis" for 127.0.0.1 at 2018-04-04 16:32:47 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT "wikis".* FROM "wikis"[0m
+  Rendered wikis/index.html.erb within layouts/application (172.5ms)
+Completed 500 Internal Server Error in 203ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `link_for' for #<#<Class:0x007ffc529a4c18>:0x007ffc52997e78>
+Did you mean?  link_to):
+    2: 
+    3: <% @wikis.each do |wiki|%>
+    4:   <h4> <%= wiki.title %> </h4>
+    5:   <%= link_for wiki.title, wiki %>
+    6: <% end %>
+  
+app/views/wikis/index.html.erb:5:in `block in _app_views_wikis_index_html_erb___636941092882112602_70360847167580'
+app/views/wikis/index.html.erb:3:in `_app_views_wikis_index_html_erb___636941092882112602_70360847167580'
+Started GET "/wikis" for 127.0.0.1 at 2018-04-04 16:33:02 -0500
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT "wikis".* FROM "wikis"[0m
+  Rendered wikis/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 453ms (Views: 450.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/wikis/153" for 127.0.0.1 at 2018-04-04 16:33:06 -0500
+Processing by WikisController#show as HTML
+  Parameters: {"id"=>"153"}
+  [1m[36mWiki Load (0.3ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 153], ["LIMIT", 1]]
+  Rendering wikis/show.html.erb within layouts/application
+  Rendered wikis/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 70ms (Views: 63.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/wikis/122" for 127.0.0.1 at 2018-04-04 16:34:44 -0500
+Processing by WikisController#show as HTML
+  Parameters: {"id"=>"122"}
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 122], ["LIMIT", 1]]
+  Rendering wikis/show.html.erb within layouts/application
+  Rendered wikis/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 93ms (Views: 88.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/wikis/122/edit" for 127.0.0.1 at 2018-04-04 16:34:45 -0500
+Processing by WikisController#edit as HTML
+  Parameters: {"id"=>"122"}
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-04-04 16:34:45 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (89.5ms)
+Completed 200 OK in 238ms (Views: 195.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/wikis/122" for 127.0.0.1 at 2018-04-04 16:37:41 -0500
+Processing by WikisController#show as HTML
+  Parameters: {"id"=>"122"}
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 122], ["LIMIT", 1]]
+  Rendering wikis/show.html.erb within layouts/application
+  Rendered wikis/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 76ms (Views: 72.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/wikis/122" for 127.0.0.1 at 2018-04-04 16:40:16 -0500
+Processing by WikisController#show as HTML
+  Parameters: {"id"=>"122"}
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 122], ["LIMIT", 1]]
+  Rendering wikis/show.html.erb within layouts/application
+  Rendered wikis/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 81ms (Views: 76.9ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/wikis/122" for 127.0.0.1 at 2018-04-04 16:40:19 -0500
+Processing by WikisController#destroy as HTML
+  Parameters: {"authenticity_token"=>"pyR+NRyXXiaHnR+ZePl2jKrgEr8FTYrANx2MmMDGOePSW9zXiBgKagNRAZjbI+AanZV7Rygi0f2eR6/J+A//jg==", "id"=>"122"}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-04-04 16:40:19 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 71ms (Views: 70.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/wikis/122" for 127.0.0.1 at 2018-04-04 16:40:23 -0500
+Processing by WikisController#show as HTML
+  Parameters: {"id"=>"122"}
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 122], ["LIMIT", 1]]
+  Rendering wikis/show.html.erb within layouts/application
+  Rendered wikis/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 69ms (Views: 66.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/wikis/122" for 127.0.0.1 at 2018-04-04 16:40:25 -0500
+Processing by WikisController#show as HTML
+  Parameters: {"id"=>"122"}
+  [1m[36mWiki Load (0.1ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 122], ["LIMIT", 1]]
+  Rendering wikis/show.html.erb within layouts/application
+  Rendered wikis/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 77ms (Views: 73.6ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/wikis/122" for 127.0.0.1 at 2018-04-04 16:40:30 -0500
+Processing by WikisController#destroy as HTML
+  Parameters: {"authenticity_token"=>"e7ICJ5xq6B5qpCVbvVip4mAZoz5ZbxWYbOZunYl+/TMOzaDFCOW8Uu5oO1oegj90V2zKxnQATqXFvE3Msbc7Xg==", "id"=>"122"}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-04-04 16:40:30 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 69ms (Views: 67.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-04-04 16:40:45 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8emLGekz+l2w2LfOLnT4Pd6VZJgcDl0+SYwNFatc9xOElin7fbyuETQUqc+Nrm6r6eANYDFhBgPg1i5Ek5Uxfg==", "user"=>{"email"=>"lassitergregg@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "lassitergregg@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 250ms (ActiveRecord: 0.5ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8emLGekz+l2w2LfOLnT4Pd6VZJgcDl0+SYwNFatc9xOElin7fbyuETQUqc+Nrm6r6eANYDFhBgPg1i5Ek5Uxfg==", "user"=>{"email"=>"lassitergregg@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 249ms (Views: 73.3ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "role" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2018-04-04 21:42:22.322080"], ["role", 1], ["id", 2]]
+  [1m[35m (360.7ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/users/password/new" for 127.0.0.1 at 2018-04-04 16:42:47 -0500
+Processing by Devise::PasswordsController#new as HTML
+  Rendering devise/passwords/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/passwords/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 109ms (Views: 89.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/password" for 127.0.0.1 at 2018-04-04 16:42:53 -0500
+Processing by Devise::PasswordsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VG8xD4idQ/AbTNSLqjF1kV+MwsxmlRkNGsWdlAS4cz5QVjUrUGj5IuaNj+LPoQO7SJImunTiGWntsGKb4Jynww==", "user"=>{"email"=>"lassitergregg@gmail.com"}, "commit"=>"Send me reset password instructions"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "lassitergregg@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."reset_password_token" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["reset_password_token", "f03fe4a806e8f2de6d2d90b880bc75b6ea295cf03fe4f255c8fc22346fafe1f9"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "reset_password_token" = ?, "reset_password_sent_at" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["reset_password_token", "f03fe4a806e8f2de6d2d90b880bc75b6ea295cf03fe4f255c8fc22346fafe1f9"], ["reset_password_sent_at", "2018-04-04 21:42:53.349874"], ["updated_at", "2018-04-04 21:42:53.350695"], ["id", 2]]
+  [1m[35m (50.2ms)[0m  [1m[36mcommit transaction[0m
+  Rendering devise/mailer/reset_password_instructions.html.erb
+  Rendered devise/mailer/reset_password_instructions.html.erb (1.5ms)
+Devise::Mailer#reset_password_instructions: processed outbound mail in 441.6ms
+Sent mail to lassitergregg@gmail.com (9.8ms)
+Date: Wed, 04 Apr 2018 16:42:54 -0500
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: lassitergregg@gmail.com
+Message-ID: <5ac546de11448_9abf3ffe266f40c841913@Lassiters-MacBook-Pro.local.mail>
+Subject: Reset password instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Hello lassitergregg@gmail.com!</p>
+
+<p>Someone has requested a link to change your password. You can do this through the link below.</p>
+
+<p><a href="http://localhost:3000/users/password/edit?reset_password_token=XaX1y_RJdxRqZewzW-wP">Change my password</a></p>
+
+<p>If you didn't request this, please ignore this email.</p>
+<p>Your password won't change until you access the link above and create a new one.</p>
+
+Completed 500 Internal Server Error in 1045ms (ActiveRecord: 51.5ms)
+
+
+  
+Errno::ECONNREFUSED (Connection refused - connect(2) for "localhost" port 25):
+  
+/Users/lassitergregg/.rvm/rubies/ruby-2.4.1/lib/ruby/2.4.0/net/smtp.rb:539:in `initialize'
+/Users/lassitergregg/.rvm/rubies/ruby-2.4.1/lib/ruby/2.4.0/net/smtp.rb:539:in `open'
+/Users/lassitergregg/.rvm/rubies/ruby-2.4.1/lib/ruby/2.4.0/net/smtp.rb:539:in `tcp_socket'
+/Users/lassitergregg/.rvm/rubies/ruby-2.4.1/lib/ruby/2.4.0/net/smtp.rb:549:in `block in do_start'
+/Users/lassitergregg/.rvm/rubies/ruby-2.4.1/lib/ruby/2.4.0/timeout.rb:93:in `block in timeout'
+/Users/lassitergregg/.rvm/rubies/ruby-2.4.1/lib/ruby/2.4.0/timeout.rb:103:in `timeout'
+/Users/lassitergregg/.rvm/rubies/ruby-2.4.1/lib/ruby/2.4.0/net/smtp.rb:548:in `do_start'
+/Users/lassitergregg/.rvm/rubies/ruby-2.4.1/lib/ruby/2.4.0/net/smtp.rb:518:in `start'
+mail (2.7.0) lib/mail/network/delivery_methods/smtp.rb:109:in `start_smtp_session'
+mail (2.7.0) lib/mail/network/delivery_methods/smtp.rb:100:in `deliver!'
+mail (2.7.0) lib/mail/message.rb:2160:in `do_delivery'
+mail (2.7.0) lib/mail/message.rb:260:in `block in deliver'
+actionmailer (5.1.5) lib/action_mailer/base.rb:558:in `block in deliver_mail'
+activesupport (5.1.5) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.5) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.5) lib/active_support/notifications.rb:166:in `instrument'
+actionmailer (5.1.5) lib/action_mailer/base.rb:556:in `deliver_mail'
+mail (2.7.0) lib/mail/message.rb:260:in `deliver'
+actionmailer (5.1.5) lib/action_mailer/message_delivery.rb:96:in `block in deliver_now'
+actionmailer (5.1.5) lib/action_mailer/rescuable.rb:15:in `handle_exceptions'
+actionmailer (5.1.5) lib/action_mailer/message_delivery.rb:95:in `deliver_now'
+devise (4.4.3) lib/devise/models/authenticatable.rb:193:in `send_devise_notification'
+devise (4.4.3) lib/devise/models/recoverable.rb:99:in `send_reset_password_instructions_notification'
+devise (4.4.3) lib/devise/models/recoverable.rb:52:in `send_reset_password_instructions'
+devise (4.4.3) lib/devise/models/recoverable.rb:136:in `send_reset_password_instructions'
+devise (4.4.3) app/controllers/devise/passwords_controller.rb:15:in `create'
+actionpack (5.1.5) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.1.5) lib/abstract_controller/base.rb:186:in `process_action'
+actionpack (5.1.5) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.1.5) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.1.5) lib/active_support/callbacks.rb:131:in `run_callbacks'
+actionpack (5.1.5) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.1.5) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.1.5) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.1.5) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.5) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.5) lib/active_support/notifications.rb:166:in `instrument'
+actionpack (5.1.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.1.5) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+activerecord (5.1.5) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.5) lib/abstract_controller/base.rb:124:in `process'
+actionview (5.1.5) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.5) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.5) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.5) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.5) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.5) lib/action_dispatch/routing/mapper.rb:16:in `block in <class:Constraints>'
+actionpack (5.1.5) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.1.5) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.5) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.5) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.5) lib/action_dispatch/routing/route_set.rb:844:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.4) lib/rack/etag.rb:25:in `call'
+rack (2.0.4) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.4) lib/rack/head.rb:12:in `call'
+rack (2.0.4) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.4) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.5) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.5) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.5) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.5) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.5) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.5) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/method_override.rb:22:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.5) lib/rails/engine.rb:522:in `call'
+puma (3.11.3) lib/puma/configuration.rb:225:in `call'
+puma (3.11.3) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.3) lib/puma/server.rb:438:in `process_client'
+puma (3.11.3) lib/puma/server.rb:302:in `block in run'
+puma (3.11.3) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users/password/edit?reset_password_token=[FILTERED]" for 127.0.0.1 at 2018-04-04 16:43:11 -0500
+Processing by Devise::PasswordsController#edit as HTML
+  Parameters: {"reset_password_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-04 16:43:12 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 83ms (Views: 79.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/wikis" for 127.0.0.1 at 2018-04-04 16:43:25 -0500
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  [1m[36mWiki Load (0.3ms)[0m  [1m[34mSELECT "wikis".* FROM "wikis"[0m
+  Rendered wikis/index.html.erb within layouts/application (2.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 70ms (Views: 66.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/wikis/101" for 127.0.0.1 at 2018-04-04 16:43:28 -0500
+Processing by WikisController#show as HTML
+  Parameters: {"id"=>"101"}
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 101], ["LIMIT", 1]]
+  Rendering wikis/show.html.erb within layouts/application
+  Rendered wikis/show.html.erb within layouts/application (1.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 86ms (Views: 81.8ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/wikis/101" for 127.0.0.1 at 2018-04-04 16:43:32 -0500
+Processing by WikisController#destroy as HTML
+  Parameters: {"authenticity_token"=>"jp75TJf5OpQd7rOZaWDdtD752fbxhbP2HsfpQq6bhx0hDrWSyyTWfMAwf9kDfhd3N8ltfRfUAJO9OVqLNL2xfQ==", "id"=>"101"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWiki Load (0.1ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 101], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "wikis" WHERE "wikis"."id" = ?[0m  [["id", 101]]
+  [1m[35m (51.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/wikis
+Completed 302 Found in 56ms (ActiveRecord: 51.9ms)
+
+
+Started GET "/wikis" for 127.0.0.1 at 2018-04-04 16:43:33 -0500
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  [1m[36mWiki Load (0.3ms)[0m  [1m[34mSELECT "wikis".* FROM "wikis"[0m
+  Rendered wikis/index.html.erb within layouts/application (2.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 66ms (Views: 63.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/wikis/101" for 127.0.0.1 at 2018-04-04 16:43:40 -0500
+Processing by WikisController#show as HTML
+  Parameters: {"id"=>"101"}
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 101], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Wiki with 'id'=101):
+  
+app/controllers/wikis_controller.rb:10:in `show'
+Started GET "/wikis/171" for 127.0.0.1 at 2018-04-04 16:43:48 -0500
+Processing by WikisController#show as HTML
+  Parameters: {"id"=>"171"}
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 171], ["LIMIT", 1]]
+  Rendering wikis/show.html.erb within layouts/application
+  Rendered wikis/show.html.erb within layouts/application (1.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 76ms (Views: 71.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/wikis/171/edit" for 127.0.0.1 at 2018-04-04 16:43:50 -0500
+Processing by WikisController#edit as HTML
+  Parameters: {"id"=>"171"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 171], ["LIMIT", 1]]
+  Rendering wikis/edit.html.erb within layouts/application
+  Rendered wikis/edit.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 72ms (Views: 65.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/wikis/" for 127.0.0.1 at 2018-04-05 10:32:32 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT "wikis".* FROM "wikis"[0m
+  Rendered wikis/index.html.erb within layouts/application (17.2ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 1132ms (Views: 1088.2ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/wikis/" for 127.0.0.1 at 2018-04-05 10:35:48 -0500
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered wikis/index.html.erb within layouts/application (414.8ms)
+Completed 500 Internal Server Error in 426ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `wiki' for #<#<Class:0x007fa63bb8e7a8>:0x007fa64130bd50>
+Did you mean?  @wikis):
+    1: 
+    2: 
+    3: <%= render wiki %>
+  
+app/views/wikis/index.html.erb:3:in `_app_views_wikis_index_html_erb___3058067164634183985_70176028525100'
+Started GET "/wikis/" for 127.0.0.1 at 2018-04-05 10:35:58 -0500
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  [1m[36mWiki Load (0.4ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered wikis/_wiki.html.erb (392.7ms)
+  Rendered wikis/index.html.erb within layouts/application (395.8ms)
+Completed 500 Internal Server Error in 407ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `wiki' for #<#<Class:0x007fa63bb8e7a8>:0x007fa641280548>
+Did you mean?  @wikis):
+    1:        <div class="media">
+    2:          <div class="media-body">
+    3:            <h4 class="media-heading">
+    4:             <%= link_to wiki.title, wiki_path(wiki) %>
+    5:            </h4>
+    6:             <small>
+    7:                 Last updated <%= time_ago_in_words(wiki.updated_at) %> ago by <%= post.user.name %>
+  
+app/views/wikis/_wiki.html.erb:4:in `_app_views_wikis__wiki_html_erb__2986010738211444723_70176017154220'
+app/views/wikis/index.html.erb:3:in `_app_views_wikis_index_html_erb___3058067164634183985_70176017221640'
+Started GET "/wikis/" for 127.0.0.1 at 2018-04-05 10:36:37 -0500
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  Rendered wikis/_wiki.html.erb (4.2ms)
+  Rendered wikis/index.html.erb within layouts/application (6.8ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    1:        <div class="media">
+    2:          <div class="media-body">
+    3:            <h4 class="media-heading">
+    4:             <%= link_to @wiki.title, wiki_path(@wiki) %>
+    5:            </h4>
+    6:             <small>
+    7:                 Last updated <%= time_ago_in_words(@wiki.updated_at) %> ago
+  
+app/views/wikis/_wiki.html.erb:4:in `_app_views_wikis__wiki_html_erb__2986010738211444723_70175968037100'
+app/views/wikis/index.html.erb:3:in `_app_views_wikis_index_html_erb___3058067164634183985_70175968122280'
+Started GET "/wikis/171/edit" for 127.0.0.1 at 2018-04-05 10:36:47 -0500
+Processing by WikisController#edit as HTML
+  Parameters: {"id"=>"171"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 171], ["LIMIT", 1]]
+  Rendering wikis/edit.html.erb within layouts/application
+  Rendered wikis/edit.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 108ms (Views: 56.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/wikis/171/edit" for 127.0.0.1 at 2018-04-05 10:36:57 -0500
+Processing by WikisController#edit as HTML
+  Parameters: {"id"=>"171"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWiki Load (0.1ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 171], ["LIMIT", 1]]
+  Rendering wikis/edit.html.erb within layouts/application
+  Rendered wikis/edit.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 64ms (Views: 59.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/wikis/" for 127.0.0.1 at 2018-04-05 10:37:01 -0500
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  Rendered wikis/_wiki.html.erb (3.6ms)
+  Rendered wikis/index.html.erb within layouts/application (6.1ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    1:        <div class="media">
+    2:          <div class="media-body">
+    3:            <h4 class="media-heading">
+    4:             <%= link_to @wiki.title, wiki_path(@wiki) %>
+    5:            </h4>
+    6:             <small>
+    7:                 Last updated <%= time_ago_in_words(@wiki.updated_at) %> ago
+  
+app/views/wikis/_wiki.html.erb:4:in `_app_views_wikis__wiki_html_erb__2986010738211444723_70175963736500'
+app/views/wikis/index.html.erb:3:in `_app_views_wikis_index_html_erb___3058067164634183985_70176005524240'
+Started GET "/wikis/" for 127.0.0.1 at 2018-04-05 10:37:23 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  Rendered wikis/_wiki.html.erb (5.8ms)
+  Rendered wikis/index.html.erb within layouts/application (9.2ms)
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    1:        <div class="media">
+    2:          <div class="media-body">
+    3:            <h4 class="media-heading">
+    4:             <%= link_to @wiki.title, wiki_path(@wiki) %>
+    5:            </h4>
+    6:             <small>
+    7:                 Last updated <%= time_ago_in_words(@wiki.updated_at) %> ago
+  
+app/views/wikis/_wiki.html.erb:4:in `_app_views_wikis__wiki_html_erb___2895315473746166422_70274184088960'
+app/views/wikis/index.html.erb:3:in `_app_views_wikis_index_html_erb__4261075297422607554_70274148043620'
+Started POST "/__web_console/repl_sessions/14ac13b15ab37d053188ac96052cb54d/trace" for 127.0.0.1 at 2018-04-05 10:37:32 -0500
+Started POST "/__web_console/repl_sessions/14ac13b15ab37d053188ac96052cb54d/trace" for 127.0.0.1 at 2018-04-05 10:37:34 -0500
+Started POST "/__web_console/repl_sessions/14ac13b15ab37d053188ac96052cb54d/trace" for 127.0.0.1 at 2018-04-05 10:37:37 -0500
+Started POST "/__web_console/repl_sessions/14ac13b15ab37d053188ac96052cb54d/trace" for 127.0.0.1 at 2018-04-05 10:37:43 -0500
+Started GET "/wikis/" for 127.0.0.1 at 2018-04-05 10:38:04 -0500
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  Rendered wikis/_wiki.html.erb (3.7ms)
+  Rendered wikis/index.html.erb within layouts/application (6.4ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    1:        <div class="media">
+    2:          <div class="media-body">
+    3:            <h4 class="media-heading">
+    4:             <%= link_to wiki.title, wiki_path(@wiki) %>
+    5:            </h4>
+    6:             <small>
+    7:                 Last updated <%= time_ago_in_words(@wiki.updated_at) %> ago
+  
+app/views/wikis/_wiki.html.erb:4:in `_app_views_wikis__wiki_html_erb___2895315473746166422_70274149333940'
+app/views/wikis/index.html.erb:3:in `_app_views_wikis_index_html_erb__4261075297422607554_70274149376740'
+Started GET "/wikis/" for 127.0.0.1 at 2018-04-05 10:39:49 -0500
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  Rendered wikis/_wiki.html.erb (4.7ms)
+  Rendered wikis/index.html.erb within layouts/application (8.4ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    1:        <div class="media">
+    2:          <div class="media-body">
+    3:            <h4 class="media-heading">
+    4:             <%= link_to wiki.title, wiki_path(wiki) %>
+    5:            </h4>
+    6:             <small>
+    7:                 Last updated <%= time_ago_in_words(wiki.updated_at) %> ago
+  
+app/views/wikis/_wiki.html.erb:4:in `_app_views_wikis__wiki_html_erb___2895315473746166422_70274135571840'
+app/views/wikis/index.html.erb:3:in `_app_views_wikis_index_html_erb__4261075297422607554_70274135913420'
+Started POST "/__web_console/repl_sessions/dc83175b6f672f3553f9a6dbc934284b/trace" for 127.0.0.1 at 2018-04-05 10:40:05 -0500
+Started POST "/__web_console/repl_sessions/dc83175b6f672f3553f9a6dbc934284b/trace" for 127.0.0.1 at 2018-04-05 10:40:13 -0500
+Started POST "/__web_console/repl_sessions/dc83175b6f672f3553f9a6dbc934284b/trace" for 127.0.0.1 at 2018-04-05 10:40:16 -0500
+Started GET "/wikis/" for 127.0.0.1 at 2018-04-05 10:40:43 -0500
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  [1m[36mWiki Load (0.3ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered wikis/_wiki.html.erb (300.6ms)
+  Rendered wikis/index.html.erb within layouts/application (303.1ms)
+Completed 500 Internal Server Error in 314ms (ActiveRecord: 1.2ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `wiki' for #<#<Class:0x007fd3f34308e0>:0x007fd3f783a4a0>
+Did you mean?  @wikis):
+    1:        <div class="media">
+    2:          <div class="media-body">
+    3:            <h4 class="media-heading">
+    4:             <%= link_to wiki.title, wiki_path(wiki) %>
+    5:            </h4>
+    6:             <small>
+    7:                 Last updated <%= time_ago_in_words(wiki.updated_at) %> ago
+  
+app/views/wikis/_wiki.html.erb:4:in `_app_views_wikis__wiki_html_erb___2895315473746166422_70274141156060'
+app/views/wikis/index.html.erb:3:in `_app_views_wikis_index_html_erb__4261075297422607554_70274183714700'
+Started POST "/__web_console/repl_sessions/0ff237bb2fc0e744261f83cf7dcef34b/trace" for 127.0.0.1 at 2018-04-05 10:41:03 -0500
+Started POST "/__web_console/repl_sessions/0ff237bb2fc0e744261f83cf7dcef34b/trace" for 127.0.0.1 at 2018-04-05 10:41:04 -0500
+Started GET "/wikis/" for 127.0.0.1 at 2018-04-05 10:41:41 -0500
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  [1m[36mWiki Load (0.3ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Wiki Load (0.0ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered wikis/_wiki.html.erb (356.8ms)
+  Rendered wikis/index.html.erb within layouts/application (359.2ms)
+Completed 500 Internal Server Error in 370ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `wiki' for #<#<Class:0x007fd3f34308e0>:0x007fd3f79c1760>
+Did you mean?  @wikis):
+    1:        <div class="media">
+    2:          <div class="media-body">
+    3:            <h4 class="media-heading">
+    4:             <%= link_to wiki.title, wiki_path(wiki) %>
+    5:            </h4>
+    6:             <small>
+    7:                 Last updated <%= time_ago_in_words(wiki.updated_at) %> ago
+  
+app/views/wikis/_wiki.html.erb:4:in `_app_views_wikis__wiki_html_erb___2895315473746166422_70274197726020'
+app/views/wikis/index.html.erb:3:in `_app_views_wikis_index_html_erb__4261075297422607554_70274184515800'
+Started GET "/wikis/" for 127.0.0.1 at 2018-04-05 10:42:35 -0500
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered wikis/_wiki.html.erb (8.6ms)
+  Rendered wikis/index.html.erb within layouts/application (11.1ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for #<Wiki::ActiveRecord_Relation:0x007fd3f2e1a7d0>):
+    1:        <div class="media">
+    2:          <div class="media-body">
+    3:            <h4 class="media-heading">
+    4:             <%= link_to wiki.title, wiki_path(wiki) %>
+    5:            </h4>
+    6:             <small>
+    7:                 Last updated <%= time_ago_in_words(wiki.updated_at) %> ago
+  
+app/views/wikis/_wiki.html.erb:4:in `_app_views_wikis__wiki_html_erb___2895315473746166422_70274144764300'
+app/views/wikis/index.html.erb:3:in `_app_views_wikis_index_html_erb__4261075297422607554_70274144835900'
+Started GET "/wikis/" for 127.0.0.1 at 2018-04-05 10:44:28 -0500
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT "wikis".* FROM "wikis"[0m
+  Rendered collection of wikis/_wiki.html.erb [6 times] (3.2ms)
+  Rendered wikis/index.html.erb within layouts/application (6.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 402ms (Views: 397.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/wikis/111" for 127.0.0.1 at 2018-04-05 10:44:31 -0500
+Processing by WikisController#show as HTML
+  Parameters: {"id"=>"111"}
+  [1m[36mWiki Load (0.3ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 111], ["LIMIT", 1]]
+  Rendering wikis/show.html.erb within layouts/application
+  Rendered wikis/show.html.erb within layouts/application (1.9ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 70ms (Views: 64.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/wikis/171" for 127.0.0.1 at 2018-04-05 10:44:48 -0500
+Processing by WikisController#show as HTML
+  Parameters: {"id"=>"171"}
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 171], ["LIMIT", 1]]
+  Rendering wikis/show.html.erb within layouts/application
+  Rendered wikis/show.html.erb within layouts/application (1.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 69ms (Views: 65.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/wikis/171/edit" for 127.0.0.1 at 2018-04-05 10:44:50 -0500
+Processing by WikisController#edit as HTML
+  Parameters: {"id"=>"171"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWiki Load (0.1ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 171], ["LIMIT", 1]]
+  Rendering wikis/edit.html.erb within layouts/application
+  Rendered wikis/edit.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 75ms (Views: 64.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/wikis/171/edit" for 127.0.0.1 at 2018-04-05 10:45:18 -0500
+Processing by WikisController#edit as HTML
+  Parameters: {"id"=>"171"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWiki Load (0.1ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 171], ["LIMIT", 1]]
+  Rendering wikis/edit.html.erb within layouts/application
+  Rendered wikis/edit.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 73ms (Views: 68.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/wikis/171/edit" for 127.0.0.1 at 2018-04-05 10:45:36 -0500
+Processing by WikisController#edit as HTML
+  Parameters: {"id"=>"171"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWiki Load (0.1ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 171], ["LIMIT", 1]]
+  Rendering wikis/edit.html.erb within layouts/application
+  Rendered wikis/_form.html.erb (295.5ms)
+  Rendered wikis/edit.html.erb within layouts/application (298.1ms)
+Completed 500 Internal Server Error in 309ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `wiki' for #<#<Class:0x007fd3f34308e0>:0x007fd3f7e34900>
+Did you mean?  @wiki):
+    1:     <%= form_for [wiki] do |f| %>
+    2:       <% if wiki.errors.any? %>
+    3:         <div class="alert alert-danger">
+    4:           <h4><%= pluralize(wiki.errors.count, "error") %>.</h4>
+  
+app/views/wikis/_form.html.erb:1:in `_app_views_wikis__form_html_erb__515450166902134827_70274186805020'
+app/views/wikis/edit.html.erb:2:in `_app_views_wikis_edit_html_erb___2475416634592895672_70274186848620'
+Started GET "/wikis/171/edit" for 127.0.0.1 at 2018-04-05 10:46:17 -0500
+Processing by WikisController#edit as HTML
+  Parameters: {"id"=>"171"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 171], ["LIMIT", 1]]
+  Rendering wikis/edit.html.erb within layouts/application
+  Rendered wikis/_form.html.erb (365.8ms)
+  Rendered wikis/edit.html.erb within layouts/application (368.7ms)
+Completed 500 Internal Server Error in 381ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `wiki' for #<#<Class:0x007fd3f34308e0>:0x007fd3f82f5a20>
+Did you mean?  @wiki):
+    1:     <%= form_for [wiki] do |f| %>
+    2:       <% if wiki.errors.any? %>
+    3:         <div class="alert alert-danger">
+    4:           <h4><%= pluralize(wiki.errors.count, "error") %>.</h4>
+  
+app/views/wikis/_form.html.erb:1:in `_app_views_wikis__form_html_erb__515450166902134827_70274134583140'
+app/views/wikis/edit.html.erb:2:in `_app_views_wikis_edit_html_erb___2475416634592895672_70274189341200'
+Started GET "/wikis/171/edit" for 127.0.0.1 at 2018-04-05 10:46:32 -0500
+Processing by WikisController#edit as HTML
+  Parameters: {"id"=>"171"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 171], ["LIMIT", 1]]
+  Rendering wikis/edit.html.erb within layouts/application
+  Rendered wikis/edit.html.erb within layouts/application (352.9ms)
+Completed 500 Internal Server Error in 367ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `wiki' for #<#<Class:0x007fd3f34308e0>:0x007fd3f7822bc0>
+Did you mean?  @wiki):
+    1: Edit <%= @wiki.title %>
+    2: <%= render partial: 'form', local: wiki %>
+  
+app/views/wikis/edit.html.erb:2:in `_app_views_wikis_edit_html_erb___2475416634592895672_70274184360560'
+Started GET "/wikis/171/edit" for 127.0.0.1 at 2018-04-05 10:46:47 -0500
+Processing by WikisController#edit as HTML
+  Parameters: {"id"=>"171"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWiki Load (0.1ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 171], ["LIMIT", 1]]
+  Rendering wikis/edit.html.erb within layouts/application
+  Rendered wikis/_form.html.erb (476.4ms)
+  Rendered wikis/edit.html.erb within layouts/application (479.1ms)
+Completed 500 Internal Server Error in 490ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `wiki' for #<#<Class:0x007fd3f34308e0>:0x007fd3f9566308>
+Did you mean?  @wiki):
+    1:     <%= form_for [@wiki] do |f| %>
+    2:       <% if wiki.errors.any? %>
+    3:         <div class="alert alert-danger">
+    4:           <h4><%= pluralize(wiki.errors.count, "error") %>.</h4>
+    5:           <ul>
+  
+app/views/wikis/_form.html.erb:2:in `block in _app_views_wikis__form_html_erb__515450166902134827_70274209114600'
+app/views/wikis/_form.html.erb:1:in `_app_views_wikis__form_html_erb__515450166902134827_70274209114600'
+app/views/wikis/edit.html.erb:2:in `_app_views_wikis_edit_html_erb___2475416634592895672_70274199009060'
+Started GET "/wikis/171/edit" for 127.0.0.1 at 2018-04-05 10:47:18 -0500
+Processing by WikisController#edit as HTML
+  Parameters: {"id"=>"171"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWiki Load (0.1ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 171], ["LIMIT", 1]]
+  Rendering wikis/edit.html.erb within layouts/application
+  Rendered wikis/_form.html.erb (159.4ms)
+  Rendered wikis/edit.html.erb within layouts/application (161.9ms)
+Completed 500 Internal Server Error in 174ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `form_group_tag' for #<#<Class:0x007fd3f34308e0>:0x007fd3f83986d0>
+Did you mean?  form_tag):
+     9:           </ul>
+    10:         </div>
+    11:       <% end %>
+    12:       <%= form_group_tag(@wiki.errors[:title]) do %>
+    13:          <%= f.label :title %>
+    14:          <%= f.text_field :title, class: 'form-control', placeholder: "Enter wiki title" %>
+    15:       <% end %>
+  
+app/views/wikis/_form.html.erb:12:in `block in _app_views_wikis__form_html_erb__515450166902134827_70274189278980'
+app/views/wikis/_form.html.erb:1:in `_app_views_wikis__form_html_erb__515450166902134827_70274189278980'
+app/views/wikis/edit.html.erb:2:in `_app_views_wikis_edit_html_erb___2475416634592895672_70274189674580'
+Started GET "/wikis/171/edit" for 127.0.0.1 at 2018-04-05 10:48:29 -0500
+Processing by WikisController#edit as HTML
+  Parameters: {"id"=>"171"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWiki Load (0.1ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 171], ["LIMIT", 1]]
+  Rendering wikis/edit.html.erb within layouts/application
+  Rendered wikis/_form.html.erb (284.0ms)
+  Rendered wikis/edit.html.erb within layouts/application (286.6ms)
+Completed 500 Internal Server Error in 299ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `wiki' for #<#<Class:0x007fd3f34308e0>:0x007fd3f82cdbd8>
+Did you mean?  @wiki):
+    1:     <%= form_for [wiki] do |f| %>
+    2:       <% if wiki.errors.any? %>
+    3:         <div class="alert alert-danger">
+    4:           <h4><%= pluralize(wiki.errors.count, "error") %>.</h4>
+  
+app/views/wikis/_form.html.erb:1:in `_app_views_wikis__form_html_erb__515450166902134827_70274189020700'
+app/views/wikis/edit.html.erb:2:in `_app_views_wikis_edit_html_erb___2475416634592895672_70274189259560'
+Started GET "/wikis/171/edit" for 127.0.0.1 at 2018-04-05 10:48:43 -0500
+Processing by WikisController#edit as HTML
+  Parameters: {"id"=>"171"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWiki Load (0.1ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 171], ["LIMIT", 1]]
+  Rendering wikis/edit.html.erb within layouts/application
+  Rendered wikis/_form.html.erb (362.8ms)
+  Rendered wikis/edit.html.erb within layouts/application (365.3ms)
+Completed 500 Internal Server Error in 377ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `wiki' for #<#<Class:0x007fd3f34308e0>:0x007fd3fa9ba160>
+Did you mean?  @wiki):
+    1:     <%= form_for [@wiki] do |f| %>
+    2:       <% if wiki.errors.any? %>
+    3:         <div class="alert alert-danger">
+    4:           <h4><%= pluralize(wiki.errors.count, "error") %>.</h4>
+    5:           <ul>
+  
+app/views/wikis/_form.html.erb:2:in `block in _app_views_wikis__form_html_erb__515450166902134827_70274209728900'
+app/views/wikis/_form.html.erb:1:in `_app_views_wikis__form_html_erb__515450166902134827_70274209728900'
+app/views/wikis/edit.html.erb:2:in `_app_views_wikis_edit_html_erb___2475416634592895672_70274209666580'
+Started GET "/wikis/171/edit" for 127.0.0.1 at 2018-04-05 10:49:26 -0500
+Processing by WikisController#edit as HTML
+  Parameters: {"id"=>"171"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWiki Load (0.1ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 171], ["LIMIT", 1]]
+  Rendering wikis/edit.html.erb within layouts/application
+  Rendered wikis/_form.html.erb (155.5ms)
+  Rendered wikis/edit.html.erb within layouts/application (158.1ms)
+Completed 500 Internal Server Error in 170ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `form_group_tag' for #<#<Class:0x007fd3f34308e0>:0x007fd3f7b87ba8>
+Did you mean?  form_tag):
+     9:           </ul>
+    10:         </div>
+    11:       <% end %>
+    12:       <%= form_group_tag(@wiki.errors[:title]) do %>
+    13:          <%= f.label :title %>
+    14:          <%= f.text_field :title, class: 'form-control', placeholder: "Enter wiki title" %>
+    15:       <% end %>
+  
+app/views/wikis/_form.html.erb:12:in `block in _app_views_wikis__form_html_erb__515450166902134827_70274199173560'
+app/views/wikis/_form.html.erb:1:in `_app_views_wikis__form_html_erb__515450166902134827_70274199173560'
+app/views/wikis/edit.html.erb:2:in `_app_views_wikis_edit_html_erb___2475416634592895672_70274136490720'
+Started GET "/wikis/171/edit" for 127.0.0.1 at 2018-04-05 10:51:55 -0500
+Processing by WikisController#edit as HTML
+  Parameters: {"id"=>"171"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWiki Load (0.3ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 171], ["LIMIT", 1]]
+  Rendering wikis/edit.html.erb within layouts/application
+  Rendered wikis/_form.html.erb (121.7ms)
+  Rendered wikis/edit.html.erb within layouts/application (126.0ms)
+Completed 200 OK in 311ms (Views: 231.3ms | ActiveRecord: 3.2ms)
+
+
+Started PATCH "/wikis/171" for 127.0.0.1 at 2018-04-05 10:52:06 -0500
+Processing by WikisController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xOlxf2EqCeZrqR6s1UnqeqgN0L5jk9gop8y/l+LwxwNreT2hPfflDrZ30uy/VyC5oT1kNYXCa00EMgxeeNbxYw==", "wiki"=>{"title"=>"testing with edit", "body"=>"Labore omnis ipsam doloremque enim cupiditate et. Numquam voluptas eveniet vel unde maiores pariatur. Culpa a beatae ab. Itaque quis ab. Dolorum similique vel consequatur natus reiciendis. Nihil voluptatem eum sed aut at voluptas. Excepturi laboriosam sit explicabo minus aut maiores quod."}, "commit"=>"Save", "id"=>"171"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWiki Load (0.1ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 171], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "wikis" SET "title" = ?, "updated_at" = ? WHERE "wikis"."id" = ?[0m  [["title", "testing with edit"], ["updated_at", "2018-04-05 15:52:06.323278"], ["id", 171]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/wikis/171
+Completed 302 Found in 180ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/wikis/171" for 127.0.0.1 at 2018-04-05 10:52:06 -0500
+Processing by WikisController#show as HTML
+  Parameters: {"id"=>"171"}
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 171], ["LIMIT", 1]]
+  Rendering wikis/show.html.erb within layouts/application
+  Rendered wikis/show.html.erb within layouts/application (1.2ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 87ms (Views: 83.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/wikis/" for 127.0.0.1 at 2018-04-05 10:52:19 -0500
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT "wikis".* FROM "wikis"[0m
+  Rendered collection of wikis/_wiki.html.erb [6 times] (1.8ms)
+  Rendered wikis/index.html.erb within layouts/application (5.2ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 68ms (Views: 64.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/wikis/" for 127.0.0.1 at 2018-04-05 10:54:13 -0500
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT "wikis".* FROM "wikis"[0m
+  Rendered collection of wikis/_wiki.html.erb [6 times] (1.7ms)
+  Rendered wikis/index.html.erb within layouts/application (5.2ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 69ms (Views: 65.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/wikis/new" for 127.0.0.1 at 2018-04-05 10:54:15 -0500
+Processing by WikisController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering wikis/new.html.erb within layouts/application
+  Rendered wikis/_form.html.erb (2.7ms)
+  Rendered wikis/new.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 72ms (Views: 67.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/wikis" for 127.0.0.1 at 2018-04-05 10:54:34 -0500
+Processing by WikisController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7vlzUsG8WFSKTMj0a7Zmi35DCzmEGC2R7KN0loxNxCrzTCyoLoSrU/fXJ1WiNHRGW7DJTIB7iKgnIu4qhNpRpg==", "wiki"=>{"title"=>"test wiki new", "body"=>"testing for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wiki"}, "commit"=>"Save"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "wikis" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "test wiki new"], ["body", "testing for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wikitesting for a new wiki"], ["user_id", 2], ["created_at", "2018-04-05 15:54:34.837794"], ["updated_at", "2018-04-05 15:54:34.837794"]]
+  [1m[35m (54.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/wikis/179
+Completed 302 Found in 62ms (ActiveRecord: 55.5ms)
+
+
+Started GET "/wikis/179" for 127.0.0.1 at 2018-04-05 10:54:34 -0500
+Processing by WikisController#show as HTML
+  Parameters: {"id"=>"179"}
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT  "wikis".* FROM "wikis" WHERE "wikis"."id" = ? LIMIT ?[0m  [["id", 179], ["LIMIT", 1]]
+  Rendering wikis/show.html.erb within layouts/application
+  Rendered wikis/show.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 67ms (Views: 62.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/wikis/" for 127.0.0.1 at 2018-04-05 10:54:39 -0500
+Processing by WikisController#index as HTML
+  Rendering wikis/index.html.erb within layouts/application
+  [1m[36mWiki Load (0.2ms)[0m  [1m[34mSELECT "wikis".* FROM "wikis"[0m
+  Rendered collection of wikis/_wiki.html.erb [7 times] (3.4ms)
+  Rendered wikis/index.html.erb within layouts/application (8.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 79ms (Views: 76.0ms | ActiveRecord: 0.7ms)
+
+
