@@ -39,6 +39,9 @@ gem "pundit"
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# Stripe - Payment Gateway
+gem 'stripe'
+
 group :production do
   # Use pg as the production database for Active Record
   gem 'pg', '~> 0.20'
@@ -52,10 +55,9 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
 end
-# group :test do
-#   gem "capybara"
-#   gem "selenium-webdriver"
-# end
+group :test do
+  gem "capybara"
+end
 group :development do
   gem 'sqlite3'
   gem 'pry-rails'

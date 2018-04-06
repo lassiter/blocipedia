@@ -1,0 +1,28 @@
+<%= button_to 'Edit profile', edit_user_registration_path, {:class => 'btn', method: :get} %> 
+<% if current_user.role == 0 || current_user.role == "member" %>
+  <h3>Upgrade my account</h3>
+  <%= form_tag charges_path do %>
+    <article>
+      <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
+      <% end %>
+      <label class="amount">
+        <span>Amount: $5.00</span>
+      </label>
+    </article>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            Stripe.setPublishableKey('<%=Rails.configuration.stripe[:publishable_key]%>');
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>";
+            data-description="A month's subscription";
+            data-amount="500";
+            data-locale="auto";>
+    </script>
+  <% end %>
+<% elsif current_user.role == 2 || current_user.role == "admin" %>
+  return
+<% else %>
+  <h3>Downgrade my account</h3>
+  <%= link_to "Downgrade", downgrade_path , data: { confirm: "Are you sure?", method: :post, remote: true, params: { id: current_user.id } }, class: 'btn btn-warning' %>
+<% end %>

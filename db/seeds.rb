@@ -12,7 +12,7 @@
   
   User.create!(
     email: Faker::Internet.unique.email,
-    password: Faker::Internet.password(10, 20),
+    password: "example",
     role: rand(0..1),
     confirmed_at: DateTime.now,
     sign_in_count: 1,
@@ -21,7 +21,7 @@
   )
   User.create!(
     email: Faker::Internet.unique.email,
-    password: Faker::Internet.password(10, 20),
+    password: "example",
     role: rand(0..1),
     confirmed_at: DateTime.now,
     sign_in_count: 1,
