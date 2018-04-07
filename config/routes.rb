@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   
   resources :wikis
   resources :users
-  post 'users/downgrade' => 'users#downgrade', as: :downgrade
+  post 'users/downgrade/:id' => 'users#downgrade', as: :downgrade
   resources :charges, only: [:new, :create]
 end

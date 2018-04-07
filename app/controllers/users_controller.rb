@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     puts "@user: #{@user.inspect} ---- current_user: #{current_user.inspect}"
     if @user == current_user
       @wikis.update_all(private: false)
-      current_user.update_attribute(:role, 'member').save
+      current_user.update_attribute(:role, 'member')
 
       flash[:notice] = "#{current_user.email} you're account has been downgraded"
       redirect_to user_path
