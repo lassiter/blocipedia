@@ -17,9 +17,11 @@
             <li class="nav-item">
               <%= link_to 'Wikis', wikis_path, :class => 'nav-link' %>
             </li>
+            <% if user_signed_in? %>
             <li class="nav-item">
               <%= link_to 'My Account', user_path(current_user.id), :class => 'nav-link' %>
             </li>
+            <% end %>
           </ul>
         </div>
         <div class="navbar-nav nav-item pull-right">

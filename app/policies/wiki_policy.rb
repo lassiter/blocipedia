@@ -13,7 +13,11 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def update?
-    @current_user
+    if @wiki.private?
+      @current_user.id == @wiki.user_id
+    else
+      @current_user
+    end
   end
 
   def destroy?
