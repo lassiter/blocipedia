@@ -14,7 +14,7 @@ gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 # Bootstrap sass
 gem 'bootstrap'
-gem 'sprockets-rails', '>= 3.2.1'
+gem 'sprockets-rails', '>= 3.2.1', require: 'sprockets/railtie'
 # Bootstrap Dependency
 gem 'jquery-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -54,6 +54,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'factory_bot_rails'
   gem 'faker'
+  
 end
 group :test do
   gem "capybara"

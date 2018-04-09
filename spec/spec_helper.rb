@@ -1,4 +1,6 @@
 require "rails/all"
+
+require 'rspec/support/spec'
 require 'rspec/rails'
 require 'capybara/rails' 
 require 'capybara/rspec'
