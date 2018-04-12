@@ -1,5 +1,5 @@
 class WikiPolicy < ApplicationPolicy
-
+include CollaboratorsHelper
   def initialize(current_user, model) #mentor
     @current_user = current_user
     @wiki = model #mentor
@@ -14,7 +14,7 @@ class WikiPolicy < ApplicationPolicy
 
   def update?
     if @wiki.private?
-      @current_user.id == @wiki.user_id
+      @current_user.id == @wiki.user_id || is_a_current_collaborator(@wiki)
     else
       @current_user
     end
@@ -25,6 +25,7 @@ class WikiPolicy < ApplicationPolicy
   end
 
   class Scope < Scope
+    include CollaboratorsHelper
     def resolve
       if current_user == nil
         wikis = scope.all.where(private: false)
@@ -43,14 +44,18 @@ class WikiPolicy < ApplicationPolicy
           all_wikis = scope.all
           wikis = []
           all_wikis.each do |wiki|
-            if !wiki.private? || wiki.collaborators.include?(current_user)
+
+            if !wiki.private? || is_a_current_collaborator(wiki)
               wikis << wiki # only show standard users public wikis and private wikis they are a collaborator on
             end
           end
         end
         wikis # return the wikis array we've built up
-    end
       end
+    end #resolve
+
       
   end
+
+
 end
