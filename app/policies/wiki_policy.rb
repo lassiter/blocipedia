@@ -1,5 +1,5 @@
 class WikiPolicy < ApplicationPolicy
-
+  attr_reader :current_user, :model
   def initialize(current_user, model) #mentor
     @current_user = current_user
     @wiki = model #mentor
@@ -26,7 +26,6 @@ class WikiPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      binding.pry
       wikis = []
         if current_user.role == 'admin'
           wikis = scope.all # if the user is an admin, show them all the wikis
