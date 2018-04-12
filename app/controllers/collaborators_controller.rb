@@ -7,9 +7,10 @@ include CollaboratorsHelper
     @user = User.find_by(email: params[:collaborators][:email])
     @collaborator = @current_collaborators
     authorize @collaborator
-
-    if User.exists?(@user.id)
-binding.pry
+    if @user == nil
+      flash[:alert] = "Sorry, no such user exists. "
+      redirect_to @wiki
+    elsif User.exists?(@user.id)
       if is_a_current_collaborator?(@wiki)
         flash[:alert] = "#{@user.email} is already a collaborator. "
         redirect_to @wiki
@@ -26,9 +27,9 @@ binding.pry
           render :show  
         end
       end
-    else
-      flash[:alert] = "Sorry, no such user exists. "
-      redirect_to @wiki
+    # else
+    #   flash[:alert] = "Sorry, no such user exists. "
+    #   redirect_to @wiki
     end
   
   end

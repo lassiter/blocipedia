@@ -11,7 +11,8 @@ class CollaboratorPolicy < ApplicationPolicy
   end
 
   def destroy?
-    @current_user.id == @collaborator.wiki[0].user.id|| @current_user.admin?
+
+    @current_user.id == @collaborator.wiki.user.id || @current_user.id == @collaborator.user_id || @current_user.admin?
   end
 
  
