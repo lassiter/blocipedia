@@ -1,7 +1,6 @@
 class CollaboratorsController < ApplicationController
 include CollaboratorsHelper
   def create
-    # binding.pry
     @wiki = Wiki.find(params[:wiki_id])
     @current_collaborators = @wiki.collaborators
     @user = User.find_by(email: params[:collaborators][:email])
@@ -37,7 +36,6 @@ include CollaboratorsHelper
   def destroy
     @collaborator = Collaborator.find(params[:id])
     owner = Wiki.find(@collaborator.wiki_id).user
-    # binding.pry
     authorize @collaborator
     if @collaborator.delete
       if current_user == owner || current_user.admin?

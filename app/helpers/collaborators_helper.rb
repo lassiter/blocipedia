@@ -21,7 +21,6 @@ module CollaboratorsHelper
     @collaborator.find do |i| 
       if i.user_id === current_user.id
         return true
-        binding.pry
       end
     end
     return false
