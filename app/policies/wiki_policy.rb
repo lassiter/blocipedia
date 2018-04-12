@@ -1,6 +1,6 @@
 class WikiPolicy < ApplicationPolicy
   attr_reader :current_user, :model
-include CollaboratorsHelper
+  include CollaboratorsHelper
   def initialize(current_user, model) #mentor
     @current_user = current_user
     @wiki = model #mentor

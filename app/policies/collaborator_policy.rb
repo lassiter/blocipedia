@@ -1,4 +1,6 @@
 class CollaboratorPolicy < ApplicationPolicy
+include CollaboratorsHelper
+
   attr_reader :current_user, :model
   def initialize(current_user, model)
     @current_user = current_user
@@ -11,8 +13,7 @@ class CollaboratorPolicy < ApplicationPolicy
   end
 
   def destroy?
-
-    @current_user.id == @collaborator.wiki.user.id || @current_user.id == @collaborator.user_id || @current_user.admin?
+    is_the_wiki_owner?(@collaborators) || is_a_collaborator?(@collaborator) || @current_user.admin?
   end
 
  
