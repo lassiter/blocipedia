@@ -9,8 +9,8 @@ include CollaboratorsHelper
     authorize @collaborator
 
     if User.exists?(@user.id)
-      # binding.pry
-      if is_a_current_collaborator(@wiki)
+binding.pry
+      if is_a_current_collaborator?(@wiki)
         flash[:alert] = "#{@user.email} is already a collaborator. "
         redirect_to @wiki
       elsif @user == current_user
@@ -55,7 +55,7 @@ include CollaboratorsHelper
     end
   end
   public
-  # def is_a_current_collaborator
+  # def is_a_current_collaborator?
   #   @current_collaborators = @current_collaborators.as_json
   #   @current_collaborators.each do |key|
   #     collaborator_user_id = key.dig("user_id")

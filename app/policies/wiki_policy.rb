@@ -14,7 +14,7 @@ include CollaboratorsHelper
 
   def update?
     if @wiki.private?
-      @current_user.id == @wiki.user_id || is_a_current_collaborator(@wiki)
+      @current_user.id == @wiki.user_id || is_a_current_collaborator?(@wiki)
     else
       @current_user
     end
@@ -45,7 +45,7 @@ include CollaboratorsHelper
           wikis = []
           all_wikis.each do |wiki|
 
-            if !wiki.private? || is_a_current_collaborator(wiki)
+            if !wiki.private? || is_a_current_collaborator?(wiki)
               wikis << wiki # only show standard users public wikis and private wikis they are a collaborator on
             end
           end
