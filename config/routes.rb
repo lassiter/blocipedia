@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   
   resources :wikis
   resources :users
+  resources :collaborators, only: [:create, :destroy]
   post 'users/downgrade/:id' => 'users#downgrade', as: :downgrade
   resources :charges, only: [:new, :create]
 end

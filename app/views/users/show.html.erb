@@ -24,5 +24,5 @@
   return
 <% else %>
   <h3>Downgrade my account</h3>
-  <%= link_to "Downgrade", downgrade_path , data: { confirm: "Are you sure?", method: :post, remote: true, params: { id: current_user.id } }, class: 'btn btn-warning' %>
+  <%= link_to "Downgrade", downgrade_path , data: { confirm: "Are you sure?", method: :post, remote: true, params: { id: current_user.id } }, id: "downgrade", class: 'btn btn-warning' %>
 <% end %>
