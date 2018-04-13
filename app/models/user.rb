@@ -7,16 +7,17 @@ class User < ApplicationRecord
   validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   has_many :wikis
   has_many :collaborators
+  has_many :wikis, through: :collaborators
   
 
 
-   def collaborators
-     Collaborators.where(collaborator_id: id)
-   end
+  #  def collaborators
+  #    Collaborators.where(collaborator_id: id)
+  #  end
  
-   def wikis
-    collaborators.wikis
-   end
+  #  def wikis
+  #   collaborators.wikis
+  #  end
 
 
 end

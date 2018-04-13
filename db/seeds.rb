@@ -51,12 +51,28 @@ end
     updated_at: @timestamp
   )
 end
+# Create Collaborators
+30.times do
+  Collaborator.create!(
+    wiki_id: rand(1..(Wiki.count - 1)),
+    user_id: rand(1..(User.count - 1)),
+    created_at: @timestamp,
+    updated_at: @timestamp
+  )
+end
+5.times do
+  Collaborator.create!(
+    wiki_id: 1,
+    user_id: rand(1..(User.count - 1)),
+    created_at: @timestamp,
+    updated_at: @timestamp
+  )
+end
 
+puts "Created #{User.count} users and expect 11 per run"
+puts "Created #{Wiki.count} users and expect 50 per run"
+puts "Created #{Collaborator.count} collaborators and expect 35 per run"
 
-
-
-puts "Created #{User.count} and expect 11 per run"
-puts "Created #{Wiki.count} and expect 50 per run"
 # Faker Cleanup
 1.times do 
   Faker::UniqueGenerator.clear

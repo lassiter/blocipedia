@@ -10,15 +10,23 @@ module CollaboratorsHelper
     return false
   end
   def is_the_wiki_owner?(collaborators)
-    @collaborator.wiki.find do |i| 
-      if i.user_id === current_user.id
+    if @collaborator.wiki.size === 0
+      if @collaborator.wiki[0].user_id === current_user.id 
         return true
       end
+      return false
+    else
+      @collaborator.wiki.each do |i| 
+        # binding.pry
+        if i.user_id === current_user.id
+          return true
+        end
+      end
+      return false
     end
-    return false
   end
   def is_a_collaborator?(collaborators)
-    @collaborator.find do |i| 
+    @collaborator.each do |i| 
       if i.user_id === current_user.id
         return true
       end
