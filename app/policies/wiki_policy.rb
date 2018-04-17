@@ -25,7 +25,10 @@ class WikiPolicy < ApplicationPolicy
   def destroy?
     @current_user.admin? || @current_user.id == @wiki.user_id
   end
-
+  def able_to_add_and_see_collaborator?
+    return true if @current_user.admin?
+    return true if @current_user.id == @wiki.user_id && @current_user.role == 'premium'
+  end
   class Scope < Scope
     include CollaboratorsHelper
     def resolve
@@ -46,8 +49,7 @@ class WikiPolicy < ApplicationPolicy
           all_wikis = scope.all
           wikis = []
           all_wikis.each do |wiki|
-            binding.pry
-            if !wiki.private? || is_a_current_collaborator?(wiki)
+            if !wiki.private? || is_a_current_collaborator?(wiki) # loops through active record array of collaborators
               wikis << wiki # only show standard users public wikis and private wikis they are a collaborator on
             end
           end
