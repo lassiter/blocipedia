@@ -10,7 +10,7 @@ module CollaboratorsHelper
     return false
   end
   def is_the_wiki_owner?(collaborators)
-    @collaborator.wiki.find do |i| 
+    collaborator.wiki.find do |i| 
       if i.user_id === current_user.id
         return true
       end
@@ -18,7 +18,7 @@ module CollaboratorsHelper
     return false
   end
   def is_a_collaborator?(collaborators)
-    @collaborator.find do |i| 
+    collaborator.find do |i| 
       if i.user_id === current_user.id
         return true
       end

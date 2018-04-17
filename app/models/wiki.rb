@@ -5,14 +5,5 @@ class Wiki < ApplicationRecord
     validates :body, length: { minimum: 100 }, presence: true
     validates :user, presence: true
   has_many :collaborators
-  
-
-   def collaborators
-    Collaborator.where(wiki_id: id)
-   end
- 
-   def users
-     collaborators.users
-   end
-
+  has_many :users, through: :collaborators
 end

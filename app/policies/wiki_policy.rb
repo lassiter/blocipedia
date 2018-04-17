@@ -1,9 +1,9 @@
 class WikiPolicy < ApplicationPolicy
   attr_reader :current_user, :model
   include CollaboratorsHelper
-  def initialize(current_user, model) #mentor
+  def initialize(current_user, model)
     @current_user = current_user
-    @wiki = model #mentor
+    @wiki = model
   end
 
   def index?
@@ -14,6 +14,7 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def update?
+    return true if current_user.admin?
     if @wiki.private?
       @current_user.id == @wiki.user_id || is_a_current_collaborator?(@wiki)
     else
@@ -37,7 +38,7 @@ class WikiPolicy < ApplicationPolicy
         elsif current_user.role == 'premium'
           all_wikis = scope.all
           all_wikis.each do |wiki|
-            if !wiki.private? || wiki.user == current_user || wiki.collaborators.include?(current_user)
+            if !wiki.private? || wiki.user == current_user || wiki.users.include?(current_user)
               wikis << wiki # if the user is premium, only show them public wikis, or that private wikis they created, or private wikis they are a collaborator on
             end
           end
@@ -45,7 +46,7 @@ class WikiPolicy < ApplicationPolicy
           all_wikis = scope.all
           wikis = []
           all_wikis.each do |wiki|
-
+            binding.pry
             if !wiki.private? || is_a_current_collaborator?(wiki)
               wikis << wiki # only show standard users public wikis and private wikis they are a collaborator on
             end
