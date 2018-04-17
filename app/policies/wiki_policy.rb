@@ -16,7 +16,7 @@ class WikiPolicy < ApplicationPolicy
   def update?
     return true if current_user.admin?
     if @wiki.private?
-      @current_user.id == @wiki.user_id || is_a_current_collaborator?(@wiki)
+      @current_user.id == @wiki.user_id || are_a_current_collaborator?(@wiki.collaborators)
     else
       @current_user
     end
@@ -49,7 +49,7 @@ class WikiPolicy < ApplicationPolicy
           all_wikis = scope.all
           wikis = []
           all_wikis.each do |wiki|
-            if !wiki.private? || is_a_current_collaborator?(wiki) # loops through active record array of collaborators
+            if !wiki.private? || are_a_current_collaborator?(wiki.collaborators) # loops through active record array of collaborators
               wikis << wiki # only show standard users public wikis and private wikis they are a collaborator on
             end
           end
