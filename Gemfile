@@ -44,9 +44,10 @@ gem 'bcrypt', '~> 3.1.7'
 # Stripe - Payment Gateway
 gem 'stripe'
 
+# Use pg as the production database for Active Record
+gem 'pg', '~> 0.20'
+
 group :production do
-  # Use pg as the production database for Active Record
-  gem 'pg', '~> 0.20'
   gem 'rails_12factor'
 end
 
@@ -62,17 +63,12 @@ group :test do
   gem "capybara"
 end
 group :development do
-  gem 'sqlite3'
   gem 'pry-rails'
   gem 'ruby-debug-ide'
   gem 'debase'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  # # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  # gem 'spring'
-  # gem 'spring-watcher-listen', '~> 2.0.0'
-  # using mailcatcher for emails
 end
 
 # Used for ENV variables
